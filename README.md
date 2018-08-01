@@ -1,1 +1,1 @@
-# ibn_manager
+Intent Based Networking Manager (IBN Manager)
