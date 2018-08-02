@@ -25,7 +25,7 @@ It identifies the shortest path b/w two endpoints and installs flows in the appr
  
 ```
 { 
-    "type": "PointToPointIntent", 
+    "type": "HostToHostIntent", 
     "appId": "org.onosproject.cli",  
     "priority": 55, 
     "one": "FE:1D:3D:05:BB:71/-1",
@@ -55,11 +55,11 @@ Point to Point intent gives a fine grained control on the path for example:
      },
     "ingressPoint": { 
         "device": "of:0000000000000001", 
-        "port": "1" 
+        "port": "3" 
     }, 
     "egressPoint":  {
         "device": "of:0000000000000001", 
-        "port": "7" 
+        "port": "2" 
     } 
  }
  ```
@@ -86,13 +86,14 @@ The conf folder is where the configuration files resides.
     
 3. **Controllers folder** 
     - The controllers folder contains controller classes. If we need to create controllers, the corresponding classes generated will go here. 
-    - Core bossiness logic of each view is coded here.
+    - Core business logic of each view is implement here.
     - By default, UrlMappings.groovy is also created in this folder. This is the file where we can control how requests, depending on url format, direct to which controller or resource.
     
 4. **Views folder**
-    - The views folder contains GSP files. This is the equivalent of Java's JSP files in Grails framework. This is where we put HTML related code to be rendered and shown to users. 
-    - Each controller (E.g. HelloController.groovy) will have a corresponding folder with the same name (without the controller suffix and the first letter is not capitalized). There is a special folder named layouts where templates are placed. 
-    - Templates are special GSP files that we can use to avoid repetitive code. This is where we will place our web design layout. The important thing is it should contain the `<g:layoutBody/>` tag.
+    - The views folder contains GSP files. This is the equivalent of Java's JSP files in Grails framework. 
+    - This is where we put HTML related code to be rendered and shown to users. 
+    - Each controller will have a corresponding folder with the same name (without the controller suffix and the first letter is not capitalized). 
+    - There is a special folder named layouts where templates are placed. Templates are special GSP files that we can use to avoid repetitive code. This is where we will place our web design layout. The important thing is it should contain the `<g:layoutBody/>` tag.
     
 5. **Domain folder**
     -  This is where we will put Groovy classes that corresponds to a table in a database.
@@ -101,13 +102,15 @@ The conf folder is where the configuration files resides.
     - Controllers are the entry point of interaction with users. But it is not good practice to put business code inside controllers. We usually place them in services, and we invoke those services inside controllers.
      
 7. **Taglib folder**
-    - One of my favorite thing in Grails is how easy it is to create a custom tag. This folder is where we place code for custom tags.
+    - Grails provide taglib is how easy it which is helpful for creating a custom tag easily. This folder is where we place code for custom tags.
      
 8. **i8n folder**
-    - This is the folder that contains resources for translation. By default, lookups to messages are searched in messages.properties. But when users of your application has chosen a different locale, then lookups will automatically search the appropriate file. E.g. messages_ja.properties for Japanese.
+    - This is the folder that contains resources for translation. By default, lookups to messages are searched in messages.properties. 
+    - But when users of your application has chosen a different locale, then lookups will automatically search the appropriate file. E.g. messages_ja.properties for Japanese.
     
 9. **Init folder**
-    - This contains files related to when your application is launched. Application.groovy is a convenience class that we can use inside an IDE to launch our Grails 3 application. Because IDE's usually has a way to run a program that has a main static method. Hence this class is provided to launch our application via main method. 
+    - This contains files related to when your application is launched. 
+    - Application.groovy is a convenience class that we can use inside an IDE to launch our Grails 3 application. Because IDE's usually has a way to run a program that has a main static method. Hence this class is provided to launch our application via main method. 
 
 ### Source Folder
 The source folder contains supporting code that we can use in our Grails project: 
