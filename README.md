@@ -14,6 +14,8 @@ This application (remotely) will interact with ONOS controller via REST and inst
 * Make intents according to their policies 
 * Compile intents into json format 
 * Send them to ONOS controller
+* Maintain database for each intent
+* Provide functionality to delete intent specific to mac address
 
 ## Host To Host intent ONOS
 Host to Host intent provide  the simple connectivity intent which enables the connectivity between two hosts. 
@@ -107,8 +109,12 @@ The conf folder is where the configuration files resides.
 9. **Init folder**
     - This contains files related to when your application is launched. Application.groovy is a convenience class that we can use inside an IDE to launch our Grails 3 application. Because IDE's usually has a way to run a program that has a main static method. Hence this class is provided to launch our application via main method. 
 
-###Source Folder
+### Source Folder
 The source folder contains supporting code that we can use in our Grails project: 
 * integration-test - this will contain integration test codes
 * main/groovy - we can write any Groovy classes here that we can use inside controllers, etc. E.g. utility classes.
 * test - this will contain unit test codes
+
+## Download 
+You can clone project from here.
+https://github.com/ncl427/IBN-Manager
