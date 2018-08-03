@@ -10,36 +10,64 @@
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 
     <asset:stylesheet src="application.css"/>
+    <asset:stylesheet src="style.css"/>
+    <asset:javascript src="application.js"/>
+    <asset:javascript src="jquery-2.2.0.min.js"/>
+    <asset:javascript src="menu-collapsed.js"/>
+    <asset:javascript src="menu.js"/>
 
     <g:layoutHead/>
 </head>
 <body>
 
+    <g:javascript>
+      function callMyAjax(){
+        $.ajax({
+          url:'${g.createLink( controller:'yourcontroller', action:'youraction')}',
+          data:{
+               param1:param1,
+               param2:param2
+          }
+        });
+      }
+    </g:javascript>
+
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div style="">
             <asset:image src="ibn_banner.png" alt="IBN Manager Logo" width="110%" height="250px"  />
         </div>
-        %{--<div class="container">--}%
-            %{--<div class="navbar-header">--}%
-                %{--<asset:image src="ibn_banner.png" alt="IBN Manager Logo" style="width: 100%"/>--}%
-            %{--</div>--}%
-            %{--<div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">--}%
-                %{--<ul class="nav navbar-nav navbar-right">--}%
-                    %{--<g:pageProperty name="page.nav" />--}%
-                %{--</ul>--}%
-            %{--</div>--}%
-        %{--</div>--}%
     </div>
 
-    <g:layoutBody/>
+    <div style="float: left; width: 20%; padding: 1em; height: 60%">
+        <ul id="menu">
+            <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
+            <li>
+                <a href="#">Point To Point Intent</a>
+                <ul>
+                    <li><a class="home" href="${createLink(uri: '/pointToPointIntent/index')}">List</a></li>
+                    <li><a class="home" href="${createLink(uri: '/pointToPointIntent/create')}">Create New</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Host To Host Intent</a>
+                <ul>
+                    <li><a class="home" href="${createLink(uri: '/hostToHostIntent/index')}">List</a></li>
+                    <li><a class="home" href="${createLink(uri: '/hostToHostIntent/create')}">Create New</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-    <div class="footer" role="contentinfo"></div>
+    <div style="float: left; width: 80%; padding: 1em; height: 60%">
+        <g:layoutBody/>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        <p>© Copyright 2018 | NCL-JEJU National University Korea</p>
+    </div>
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
-
-    <asset:javascript src="application.js"/>
-
 </body>
 </html>

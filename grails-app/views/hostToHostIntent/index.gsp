@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div id="list-hostToHostIntent" class="content scaffold-list" role="main">
-            <h1 style="text-align: center">Host To Host Intent List</h1>
+            <h1>Host To Host Intent List</h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>

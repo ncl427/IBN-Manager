@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div id="create-hostToHostIntent" class="content scaffold-create" role="main">
-            <h1 style="text-align: center">Create Host To Host Intent</h1>
+            <h1>Create Host To Host Intent</h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>

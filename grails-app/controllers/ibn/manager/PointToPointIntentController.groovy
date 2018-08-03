@@ -112,7 +112,7 @@ class PointToPointIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'pointToPointIntent.label', default: ' Point To Point Intent'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'pointToPointIntent.label', default: ' Point To Point Intent')])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

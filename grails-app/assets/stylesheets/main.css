@@ -81,6 +81,23 @@ img {
 
 .scaffold-list h1 {
     border: none;
+    text-align: center;
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.scaffold-create h1 {
+    border: none;
+    text-align: center;
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.scaffold-show h1 {
+    border: none;
+    text-align: center;
+    padding-bottom: 1em;
+    font-weight: bold;
 }
 
 .footer {
@@ -89,8 +106,10 @@ img {
     clear: both;
     font-size: 0.8em;
     margin-top: 1.5em;
-    padding: 1em;
-    min-height: 1em;
+    /*padding: 1em;*/
+    min-height: 0.9em;
+    padding: 2em;
+    text-align: center;
 }
 
 .footer a {

@@ -92,7 +92,7 @@ class HostToHostIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent')])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
