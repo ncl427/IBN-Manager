@@ -591,3 +591,17 @@ img.grails-logo {
     height:340px;
     margin-top:-10px;
 }
+
+.layout-body {
+    float: left;
+    width: 80%;
+    padding: 1em;
+    height: 60%;
+    /*background-color: #efefef;*/
+    /*overflow: hidden;*/
+    /*-moz-box-shadow: 0 0 3px 1px #aaaaaa;*/
+    /*-webkit-box-shadow: 0 0 3px 1px #aaaaaa;*/
+    /*box-shadow: 0 0 3px 1px #aaaaaa;*/
+    /*margin: 0.1em 0 0 0;*/
+    /*border: none;*/
+}

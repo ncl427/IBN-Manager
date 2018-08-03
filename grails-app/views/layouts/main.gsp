@@ -58,7 +58,7 @@
         </ul>
     </div>
 
-    <div style="float: left; width: 80%; padding: 1em; height: 60%">
+    <div class="layout-body">
         <g:layoutBody/>
     </div>
 
