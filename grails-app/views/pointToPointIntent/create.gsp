@@ -51,16 +51,16 @@
                         <input type="text" name="deviceId" value="" required="" id="deviceId">
                     </div>
                     <div class="fieldcontain required">
-                        <label for="egressPort">Egress Port
-                            <span class="required-indicator">*</span>
-                        </label>
-                        <input type="text" name="egressPort" value="" required="" id="egressPort">
-                    </div>
-                    <div class="fieldcontain required">
                         <label for="ingressPort">Ingress Port
                             <span class="required-indicator">*</span>
                         </label>
                         <input type="text" name="ingressPort" value="" required="" id="ingressPort">
+                    </div>
+                    <div class="fieldcontain required">
+                        <label for="egressPort">Egress Port
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <input type="text" name="egressPort" value="" required="" id="egressPort">
                     </div>
                 </fieldset>
                 <fieldset class="buttons">

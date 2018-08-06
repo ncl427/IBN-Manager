@@ -6,8 +6,8 @@ class PointToPointIntent {
     String intentKey
     String macAddress
     String deviceId
-    int egressPort
     int ingressPort
+    int egressPort
     String applicationId
     int priority
 
