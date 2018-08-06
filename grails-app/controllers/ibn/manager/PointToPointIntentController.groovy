@@ -1,6 +1,5 @@
 package ibn.manager
 
-import grails.gorm.transactions.Transactional
 import grails.plugins.rest.client.RestResponse
 import grails.validation.ValidationException
 import groovy.ClientONOS
@@ -26,7 +25,6 @@ class PointToPointIntentController {
         respond new PointToPointIntent(params)
     }
 
-    @Transactional
     def save(PointToPointIntent pointToPointIntent) {
 
         if (pointToPointIntent == null) {
@@ -37,28 +35,33 @@ class PointToPointIntentController {
         try {
 
             ClientONOS clientONOS = new ClientONOS();
+            RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
+            pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 
-            for (int i = 0; i < 2; i++){
+            pointToPointIntentService.save(pointToPointIntent)
 
-                if (i==0){
-
-                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
-                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
-
-                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
-
-                } else {
-
-                    int tempIngressPort
-                    tempIngressPort = pointToPointIntent.getIngressPort();
-                    pointToPointIntent.setIngressPort(pointToPointIntent.getEgressPort());
-                    pointToPointIntent.setEgressPort(tempIngressPort);
-                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
-                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
-
-                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
-                }
-            }
+            // code used for assigning same path for two-way traffic
+//            for (int i = 0; i < 2; i++){
+//
+//                if (i==0){
+//
+//                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
+//                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
+//
+//                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
+//
+//                } else {
+//
+//                    int tempIngressPort
+//                    tempIngressPort = pointToPointIntent.getIngressPort();
+//                    pointToPointIntent.setIngressPort(pointToPointIntent.getEgressPort());
+//                    pointToPointIntent.setEgressPort(tempIngressPort);
+//                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
+//                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
+//
+//                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
+//                }
+//            }
 
         } catch (ValidationException e) {
             respond pointToPointIntent.errors, view:'create'
