@@ -1,5 +1,6 @@
 package ibn.manager
 
+import grails.config.Config
 import grails.plugins.rest.client.RestResponse
 import grails.validation.ValidationException
 import groovy.ClientONOS
@@ -9,6 +10,10 @@ import static org.springframework.http.HttpStatus.*
 class HostToHostIntentController {
 
     HostToHostIntentService hostToHostIntentService
+
+    String url
+    String username
+    String password
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -33,7 +38,8 @@ class HostToHostIntentController {
 
         try {
 
-            ClientONOS clientONOS = new ClientONOS();
+            readPropertyFile();
+            ClientONOS clientONOS = new ClientONOS(url, username, password);
             RestResponse response = clientONOS.createHostToHostIntent(hostToHostIntent);
             hostToHostIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 
@@ -85,7 +91,8 @@ class HostToHostIntentController {
             return
         }
 
-        ClientONOS clientONOS = new ClientONOS();
+        readPropertyFile();
+        ClientONOS clientONOS = new ClientONOS(url, username, password);
         clientONOS.deleteIntent("org.onosproject.cli","${hostToHostIntentService.get(id).intentKey}")
 
         hostToHostIntentService.delete(id)
@@ -107,5 +114,13 @@ class HostToHostIntentController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    void readPropertyFile (){
+
+        Config config = grailsApplication.config
+        url = config.getProperty('onos.url')
+        username = config.getProperty('onos.username')
+        password = config.getProperty('onos.password')
     }
 }

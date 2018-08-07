@@ -4,11 +4,18 @@ import grails.plugins.rest.client.RestResponse
 import grails.validation.ValidationException
 import groovy.ClientONOS
 
+import grails.config.Config
+
 import static org.springframework.http.HttpStatus.*
 
 class PointToPointIntentController {
 
     PointToPointIntentService pointToPointIntentService
+
+    String url
+    String username
+    String password
+
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -34,7 +41,8 @@ class PointToPointIntentController {
 
         try {
 
-            ClientONOS clientONOS = new ClientONOS();
+            readPropertyFile();
+            ClientONOS clientONOS = new ClientONOS(url, username, password);
             RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
             pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 
@@ -110,7 +118,8 @@ class PointToPointIntentController {
             return
         }
 
-        ClientONOS clientONOS = new ClientONOS();
+        readPropertyFile();
+        ClientONOS clientONOS = new ClientONOS(url, username, password);
         clientONOS.deleteIntent("org.onosproject.cli","${pointToPointIntentService.get(id).intentKey}")
 
         pointToPointIntentService.delete(id)
@@ -132,5 +141,13 @@ class PointToPointIntentController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    void readPropertyFile (){
+
+        Config config = grailsApplication.config
+        url = config.getProperty('onos.url')
+        username = config.getProperty('onos.username')
+        password = config.getProperty('onos.password')
     }
 }

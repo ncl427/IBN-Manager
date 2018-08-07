@@ -1,5 +1,7 @@
 package groovy
 
+import grails.config.Config
+import grails.core.support.GrailsConfigurationAware
 import grails.plugins.rest.client.RestBuilder
 import grails.plugins.rest.client.RestResponse
 import ibn.manager.HostToHostIntent
@@ -10,21 +12,29 @@ class ClientONOS {
 
     RestBuilder restBuilder
 
-    ClientONOS(){
+    String url
+    String username
+    String password
+
+    ClientONOS(String onosUrl, String onosUsername, String onosPassword){
+
         restBuilder = new RestBuilder()
+        url = onosUrl
+        username = onosUsername
+        password = onosPassword
     }
 
     RestResponse createHostToHostIntent(HostToHostIntent hostToHostIntent){
 
         try {
 
-            def res = restBuilder.post("http://117.17.102.192:8181/onos/v1/intents"){
-                auth("karaf","karaf")
+            def res = restBuilder.post("$url/onos/v1/intents"){
+                auth("$username","$password")
                 contentType("application/json")
                 accept("application/json")
                 json {
                     type = "HostToHostIntent"
-                    appId = "org.onosproject.cli"
+                    appId = "${hostToHostIntent.applicationId}"
                     priority = 100
                     one = "${hostToHostIntent.macAddressSrc}"
                     two = "${hostToHostIntent.macAddressDes}"
@@ -44,13 +54,13 @@ class ClientONOS {
 
         try {
 
-            def res = restBuilder.post("http://117.17.102.192:8181/onos/v1/intents"){
-                auth("karaf","karaf")
+            def res = restBuilder.post("$url/onos/v1/intents"){
+                auth("$username","$password")
                 contentType("application/json")
                 accept("application/json")
                 json {
                     type = "PointToPointIntent"
-                    appId = "org.onosproject.cli"
+                    appId = "${pointToPointIntent.applicationId}"
                     priority = 100
                     if (first){
                         selector = {
@@ -86,8 +96,8 @@ class ClientONOS {
 
         try {
 
-            def res  = restBuilder.delete("http://117.17.102.192:8181/onos/v1/intents/${applicationId}/${key}") {
-                auth("karaf", "karaf")
+            def res  = restBuilder.delete("$url/onos/v1/intents/${applicationId}/${key}") {
+                auth("$username","$password")
                 accept("application/json")
             }
 
