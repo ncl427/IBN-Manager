@@ -1,7 +1,7 @@
 # Project Title
 **Intent Based Networking Manager (IBN Manager)**
 
-![ALT text](/Images/system_diagram.png "System Diagram")
+![ALT text](/readme_Images/system_diagram.png "System Diagram")
 
 
 ## Introduction
@@ -33,7 +33,7 @@ It identifies the shortest path b/w two endpoints and installs flows in the appr
  }
 ```
  
-![ALT text](/Images/host_to_host_intent.png "Host To Host intent ONOS")
+![ALT text](/readme_Images/host_to_host_intent.png "Host To Host intent ONOS")
 
 
 ## Point To Point intent ONOS
@@ -64,7 +64,7 @@ Point to Point intent gives a fine grained control on the path for example:
  }
  ```
  
-![ALT text](/Images/point_to_point_intent.png "Point To Point intent ONOS")
+![ALT text](/readme_Images/point_to_point_intent.png "Point To Point intent ONOS")
 
 ## Project Structure
 This application is based on MVC development architecture using Grails 3 framework. Grails 3 framework is used Gradle as build automation system.
@@ -72,7 +72,7 @@ This application is based on MVC development architecture using Grails 3 framewo
 ### grails-app
 Most of the things that we will write will reside in the grails-app folder. This is where our Grails specific code will reside and it follows certain conventions.
  
- ![ALT text](/Images/project_structure.png "Grails3 Project Structure")
+ ![ALT text](/readme_Images/project_structure.png "Grails3 Project Structure")
 
 1. **Assets folder**
     - This is where we will put most of our static files that we will refer in our HTML code. 
