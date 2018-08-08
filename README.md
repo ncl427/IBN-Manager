@@ -148,10 +148,10 @@ If Grails is working correctly you should now be able to type `grails -version` 
 ```Grails version: 3.3.6```
 
 ##  IDE
-* Recomended IDE for Grovvy on Grails framework developemtn tool is **IntelliJ IDEA Ultimate**.
+* **IntelliJ IDEA Ultimate** is a recommended IDE for development of Java based web application using Groovy on Grails framework.
 * [Download](https://www.jetbrains.com/student/) free individual licenses for students and faculty members.
 * [Getting Started with Grails 3 with IntelliJ IDEA](https://www.jetbrains.com/help/idea/getting-started-with-grails3.html)
 * [Creating Grails Application from Existing Code](https://www.jetbrains.com/help/idea/creating-grails-application-from-existing-code.html)
 ## Download 
-You can clone project from here.
+You can clone/download project from here.
 https://github.com/ncl427/IBN-Manager
