@@ -130,11 +130,14 @@ Download the appropriate **JDK** for your operating system, run the installer, a
 JAVA_HOME=/path/to/Java/jdk
 PATH=%JAVA_HOME/bin%
  ```
+
+###  Downloading and Installing
+The first step to getting up and running with Grails is to install the distribution. MySQL database is required as a external database. 
+
+#### Download MySQL Installer
+ * Download and install [mysql-installer-community-8.0.11.0](https://dev.mysql.com/downloads/mysql/) version in your developer machine. 
  
- ###  Downloading and Installing
- The first step to getting up and running with Grails is to install the distribution.
- 
-#### Manual installation
+#### Grails Manual installation
 * [Download](https://github.com/grails/grails-core/releases) a binary distribution of Grails and extract the resulting zip file to a location of your choice
 * Set the **GRAILS_HOME** environment variable to the location where you extracted the zip
 
@@ -145,7 +148,9 @@ PATH=%GRAILS_HOME/bin%
  
 If Grails is working correctly you should now be able to type `grails -version` in the terminal window and see output similar to this:
 
-```Grails version: 3.3.6```
+```
+Grails version: 3.3.6
+```
 
 ##  IDE
 * **IntelliJ IDEA Ultimate** is a recommended IDE for development of Java based web application using Groovy on Grails framework.
