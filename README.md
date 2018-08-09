@@ -157,6 +157,7 @@ Grails version: 3.3.6
 * [Download](https://www.jetbrains.com/student/) free individual licenses for students and faculty members.
 * [Getting Started with Grails 3 with IntelliJ IDEA](https://www.jetbrains.com/help/idea/getting-started-with-grails3.html)
 * [Creating Grails Application from Existing Code](https://www.jetbrains.com/help/idea/creating-grails-application-from-existing-code.html)
+
 ## Download 
 You can clone/download project from here.
 https://github.com/ncl427/IBN-Manager
