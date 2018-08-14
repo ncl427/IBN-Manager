@@ -1,7 +1,5 @@
 package groovy
 
-import grails.config.Config
-import grails.core.support.GrailsConfigurationAware
 import grails.plugins.rest.client.RestBuilder
 import grails.plugins.rest.client.RestResponse
 import ibn.manager.HostToHostIntent
@@ -35,7 +33,7 @@ class ClientONOS {
                 json {
                     type = "HostToHostIntent"
                     appId = "${hostToHostIntent.applicationId}"
-                    priority = 100
+                    priority = hostToHostIntent.priority
                     one = "${hostToHostIntent.macAddressSrc}"
                     two = "${hostToHostIntent.macAddressDes}"
                 }
@@ -61,7 +59,7 @@ class ClientONOS {
                 json {
                     type = "PointToPointIntent"
                     appId = "${pointToPointIntent.applicationId}"
-                    priority = 100
+                    priority = pointToPointIntent.priority
                     if (first){
                         selector = {
                             criteria = [
