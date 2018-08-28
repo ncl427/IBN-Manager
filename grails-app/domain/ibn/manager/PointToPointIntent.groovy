@@ -6,8 +6,9 @@ class PointToPointIntent {
     String intentKey
     String macAddress
     String deviceId
-    int ingressPort
-    int egressPort
+    Integer sliceId
+    Integer ingressPort
+    Integer egressPort
     String applicationId
     int priority
 
@@ -16,6 +17,7 @@ class PointToPointIntent {
     }
 
     static constraints = {
+        sliceId(blank: true, nullable: true)
         intentKey(blank: true, nullable: true)
         deviceId(blank: false, nullable: false)
         egressPort(blank: false, nullable: false)

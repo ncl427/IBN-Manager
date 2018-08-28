@@ -48,7 +48,7 @@ class ClientONOS {
         }
     }
 
-    RestResponse createPointToPointIntent(PointToPointIntent pointToPointIntent, boolean first){
+    RestResponse createPathComputingIntent(PointToPointIntent pointToPointIntent, boolean first){
 
         try {
 
@@ -69,6 +69,59 @@ class ClientONOS {
                                     }
                             ]
                         }
+                    }
+                    ingressPoint = {
+                        device = "${pointToPointIntent.deviceId}"
+                        port = "${pointToPointIntent.ingressPort}"
+                    }
+                    egressPoint = {
+                        device = "${pointToPointIntent.deviceId}"
+                        port = "${pointToPointIntent.egressPort}"
+                    }
+                }
+            }
+
+            return res
+
+        } catch (RestClientException error){
+
+            println("RestClientException" + error)
+            return null
+        }
+    }
+
+    RestResponse createSlicingIntent(PointToPointIntent pointToPointIntent){
+
+        try {
+
+            def res = restBuilder.post("$url/onos/v1/intents"){
+                auth("$username","$password")
+                contentType("application/json")
+                accept("application/json")
+                json {
+                    type = "PointToPointIntent"
+                    appId = "${pointToPointIntent.applicationId}"
+                    priority = pointToPointIntent.priority
+                    selector = {
+                        criteria = [
+                                {
+                                    type = "ETH_SRC"
+                                    mac = "${pointToPointIntent.macAddress}"
+                                }
+                        ]
+                    }
+                    treatment = {
+                        instructions = [
+                                {
+                                    type = "L2MODIFICATION"
+                                    subtype = "VLAN_PUSH"
+                                },
+                                {
+                                    type = "L2MODIFICATION"
+                                    subtype = "VLAN_ID"
+                                    vlanId = ""
+                                }
+                        ]
                     }
                     ingressPoint = {
                         device = "${pointToPointIntent.deviceId}"

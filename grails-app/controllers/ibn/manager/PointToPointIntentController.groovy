@@ -32,6 +32,10 @@ class PointToPointIntentController {
         respond new PointToPointIntent(params)
     }
 
+    def slice() {
+        respond new PointToPointIntent(params)
+    }
+
     def save(PointToPointIntent pointToPointIntent) {
 
         if (pointToPointIntent == null) {
@@ -42,8 +46,14 @@ class PointToPointIntentController {
         try {
 
             readPropertyFile();
-            ClientONOS clientONOS = new ClientONOS(url, username, password);
-            RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
+            ClientONOS clientONOS = new ClientONOS(url, username, password)
+            RestResponse response
+
+            if (pointToPointIntent.getSliceId() == null)
+                response = clientONOS.createPathComputingIntent(pointToPointIntent, true)
+            else
+                response = clientONOS.createSlicingIntent(pointToPointIntent)
+            
             pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 
             pointToPointIntentService.save(pointToPointIntent)
@@ -72,7 +82,7 @@ class PointToPointIntentController {
 //            }
 
         } catch (ValidationException e) {
-            respond pointToPointIntent.errors, view:'create'
+            respond pointToPointIntent.errors, view:'path'
             return
         }
 
