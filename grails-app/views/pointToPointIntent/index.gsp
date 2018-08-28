@@ -24,10 +24,11 @@
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=id&amp;max=10&amp;order=asc">ID</a></th>
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=intentKey&amp;max=10&amp;order=asc">Intent Key</a></th>
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=macAddress&amp;max=10&amp;order=asc">Mac Address</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=deviceId&amp;max=10&amp;order=asc">Device Id</a></th>
+                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=deviceId&amp;max=10&amp;order=asc">Device ID</a></th>
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=egressPort&amp;max=10&amp;order=asc">Egress Port</a></th>
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=ingressPort&amp;max=10&amp;order=asc">Ingress Port</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=applicationId&amp;max=10&amp;order=asc">Application Id</a></th>
+                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=sliceId&amp;max=10&amp;order=asc">Slice ID</a></th>
+                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=applicationId&amp;max=10&amp;order=asc">Application ID</a></th>
                         <th class="sortable" ><a href="/hostToHostIntent/index?sort=priority&amp;max=10&amp;order=asc">Priority</a></th>
                         <th>Action</th>
                     </tr>
@@ -43,6 +44,7 @@
                                 <td>${pointToPointIntent.deviceId}</td>
                                 <td>${pointToPointIntent.egressPort}</td>
                                 <td>${pointToPointIntent.ingressPort}</td>
+                                <td>${pointToPointIntent.sliceId}</td>
                                 <td>${pointToPointIntent.applicationId}</td>
                                 <td>${pointToPointIntent.priority}</td>
                                 <td>

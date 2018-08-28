@@ -45,7 +45,8 @@
                 <a href="#">Point To Point Intent</a>
                 <ul>
                     <li><a class="home" href="${createLink(uri: '/pointToPointIntent/index')}">List</a></li>
-                    <li><a class="home" href="${createLink(uri: '/pointToPointIntent/create')}">Create New</a></li>
+                    <li><a class="home" href="${createLink(uri: '/pointToPointIntent/create')}">Create Path Intent</a></li>
+                    <li><a class="home" href="${createLink(uri: '/pointToPointIntent/slice')}">Create Slice Intent</a></li>
                 </ul>
             </li>
             <li>
