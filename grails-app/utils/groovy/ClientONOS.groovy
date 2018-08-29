@@ -119,7 +119,7 @@ class ClientONOS {
                                 {
                                     type = "L2MODIFICATION"
                                     subtype = "VLAN_ID"
-                                    vlanId = ""
+                                    vlanId = "${pointToPointIntent.sliceId}"
                                 }
                         ]
                     }
