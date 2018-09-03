@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 07/08/2018 18:12:28
+ Date: 03/09/2018 15:48:55
 */
 
 SET NAMES utf8mb4;
@@ -52,6 +52,7 @@ CREATE TABLE `point_to_point_intent`  (
   `priority` int(11) NOT NULL,
   `ingress_port` int(11) NOT NULL,
   `egress_port` int(11) NOT NULL,
+  `slice_id` int(11) NOT NULL DEFAULT 0,
   `application_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mac_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`pointToPointId`) USING BTREE
