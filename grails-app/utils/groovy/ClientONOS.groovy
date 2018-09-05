@@ -48,7 +48,7 @@ class ClientONOS {
         }
     }
 
-    RestResponse createPathComputingIntent(PointToPointIntent pointToPointIntent, boolean first){
+    RestResponse createPathComputingIntent(PointToPointIntent pointToPointIntent){
 
         try {
 
@@ -60,15 +60,13 @@ class ClientONOS {
                     type = "PointToPointIntent"
                     appId = "${pointToPointIntent.applicationId}"
                     priority = pointToPointIntent.priority
-                    if (first){
-                        selector = {
-                            criteria = [
-                                    {
-                                        type = "ETH_SRC"
-                                        mac = "${pointToPointIntent.macAddress}"
-                                    }
-                            ]
-                        }
+                    selector = {
+                        criteria = [
+                                {
+                                    type = "ETH_SRC"
+                                    mac = "${pointToPointIntent.macAddress}"
+                                }
+                        ]
                     }
                     ingressPoint = {
                         device = "${pointToPointIntent.deviceId}"
