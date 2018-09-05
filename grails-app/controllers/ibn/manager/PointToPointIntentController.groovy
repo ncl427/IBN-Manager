@@ -50,7 +50,7 @@ class PointToPointIntentController {
             RestResponse response
 
             if (pointToPointIntent.getSliceId() == null)
-                response = clientONOS.createPathComputingIntent(pointToPointIntent, true)
+                response = clientONOS.createPathComputingIntent(pointToPointIntent)
             else
                 response = clientONOS.createSlicingIntent(pointToPointIntent)
             
