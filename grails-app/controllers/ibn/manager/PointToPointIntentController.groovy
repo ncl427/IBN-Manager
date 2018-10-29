@@ -59,17 +59,7 @@ class PointToPointIntentController {
             pointToPointIntentService.save(pointToPointIntent)
 
             // code used for assigning same path for two-way traffic
-//            for (int i = 0; i < 2; i++){
-//
-//                if (i==0){
-//
-//                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
-//                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
-//
-//                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
-//
-//                } else {
-//
+
 //                    int tempIngressPort
 //                    tempIngressPort = pointToPointIntent.getIngressPort();
 //                    pointToPointIntent.setIngressPort(pointToPointIntent.getEgressPort());
@@ -78,8 +68,7 @@ class PointToPointIntentController {
 //                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 //
 //                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
-//                }
-//            }
+
 
         } catch (ValidationException e) {
             respond pointToPointIntent.errors, view:'path'
