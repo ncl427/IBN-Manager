@@ -31,7 +31,6 @@ CREATE TABLE `hibernate_sequence`  (
 DROP TABLE IF EXISTS `host_to_host_intent`;
 CREATE TABLE `host_to_host_intent`  (
   `hostToHostId` bigint(20) NOT NULL,
-  `version` bigint(20) NOT NULL,
   `mac_address_src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mac_address_des` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `intent_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
@@ -46,7 +45,6 @@ CREATE TABLE `host_to_host_intent`  (
 DROP TABLE IF EXISTS `point_to_point_intent`;
 CREATE TABLE `point_to_point_intent`  (
   `pointToPointId` bigint(20) NOT NULL,
-  `version` bigint(20) NOT NULL,
   `device_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `intent_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `priority` int(11) NOT NULL,
