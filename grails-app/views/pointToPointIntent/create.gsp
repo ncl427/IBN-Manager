@@ -28,10 +28,16 @@
             <g:form resource="${this.pointToPointIntent}" method="POST">
                 <fieldset class="form">
                     <div class="fieldcontain required">
-                        <label for="macAddress">MacAddress
+                        <label for="macAddressSrc">MacAddress Source
                             <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="macAddress" value="" required="" id="macAddress">
+                        <input type="text" name="macAddressSrc" value="" required="" id="macAddressSrc">
+                    </div>
+                    <div class="fieldcontain required">
+                        <label for="macAddressDes">MacAddress Destination
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <input type="text" name="macAddressDes" value="" required="" id="macAddressDes">
                     </div>
                     <div class="fieldcontain required">
                         <label for="applicationId">Application Id

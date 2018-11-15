@@ -4,7 +4,8 @@ class PointToPointIntent {
 
     Long id
     String intentKey
-    String macAddress
+    String macAddressSrc
+    String macAddressDes
     String deviceId
     Integer sliceId
     Integer ingressPort
@@ -22,7 +23,8 @@ class PointToPointIntent {
         deviceId(blank: false, nullable: false)
         egressPort(blank: false, nullable: false)
         ingressPort(blank: false, nullable: false)
-        macAddress(blank: false, nullable: false)
+        macAddressSrc(blank: false, nullable: false)
+        macAddressDes(blank: true, nullable: true)
         applicationId(blank: false, nullable: false)
         priority(blank: false, nullable: false)
     }

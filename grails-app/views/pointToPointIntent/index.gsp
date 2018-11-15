@@ -22,15 +22,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=id&amp;max=10&amp;order=asc">ID</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=intentKey&amp;max=10&amp;order=asc">Intent Key</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=macAddress&amp;max=10&amp;order=asc">Mac Address</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=deviceId&amp;max=10&amp;order=asc">Device ID</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=egressPort&amp;max=10&amp;order=asc">Egress Port</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=ingressPort&amp;max=10&amp;order=asc">Ingress Port</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=sliceId&amp;max=10&amp;order=asc">Slice ID</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=applicationId&amp;max=10&amp;order=asc">Application ID</a></th>
-                        <th class="sortable" ><a href="/hostToHostIntent/index?sort=priority&amp;max=10&amp;order=asc">Priority</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=id&amp;max=10&amp;order=asc">ID</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=intentKey&amp;max=10&amp;order=asc">Intent Key</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=macAddressSrc&amp;max=10&amp;order=asc">Mac Address Src</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=macAddressDes&amp;max=10&amp;order=asc">Mac Address Des</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=deviceId&amp;max=10&amp;order=asc">Device ID</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=egressPort&amp;max=10&amp;order=asc">Egress Port</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=ingressPort&amp;max=10&amp;order=asc">Ingress Port</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=sliceId&amp;max=10&amp;order=asc">Slice ID</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=applicationId&amp;max=10&amp;order=asc">Application ID</a></th>
+                        <th class="sortable" ><a href="/pointToPointIntent/index?sort=priority&amp;max=10&amp;order=asc">Priority</a></th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -41,7 +42,8 @@
                             <tr class="even">
                                 <td><a href="/pointToPointIntent/show/${pointToPointIntent.id}">${pointToPointIntent.id}</a></td>
                                 <td>${pointToPointIntent.intentKey}</td>
-                                <td>${pointToPointIntent.macAddress}</td>
+                                <td>${pointToPointIntent.macAddressSrc}</td>
+                                <td>${pointToPointIntent.macAddressDes}</td>
                                 <td>${pointToPointIntent.deviceId}</td>
                                 <td>${pointToPointIntent.egressPort}</td>
                                 <td>${pointToPointIntent.ingressPort}</td>
