@@ -32,10 +32,10 @@ class ClientONOS {
                 accept("application/json")
                 json {
                     type = "HostToHostIntent"
-                    appId = "${hostToHostIntent.applicationId}"
+                    appId = "${hostToHostIntent.applicationId.trim()}"
                     priority = hostToHostIntent.priority
-                    one = "${hostToHostIntent.macAddressSrc}"
-                    two = "${hostToHostIntent.macAddressDes}"
+                    one = "${hostToHostIntent.macAddressSrc.trim()}"
+                    two = "${hostToHostIntent.macAddressDes.trim()}"
                 }
             }
 
@@ -58,22 +58,22 @@ class ClientONOS {
                 accept("application/json")
                 json {
                     type = "PointToPointIntent"
-                    appId = "${pointToPointIntent.applicationId}"
+                    appId = "${pointToPointIntent.applicationId.trim()}"
                     priority = pointToPointIntent.priority
                     selector = {
                         criteria = [
                                 {
                                     type = "ETH_SRC"
-                                    mac = "${pointToPointIntent.macAddress}"
+                                    mac = "${pointToPointIntent.macAddress.trim()}"
                                 }
                         ]
                     }
                     ingressPoint = {
-                        device = "${pointToPointIntent.deviceId}"
+                        device = "${pointToPointIntent.deviceId.trim()}"
                         port = "${pointToPointIntent.ingressPort}"
                     }
                     egressPoint = {
-                        device = "${pointToPointIntent.deviceId}"
+                        device = "${pointToPointIntent.deviceId.trim()}"
                         port = "${pointToPointIntent.egressPort}"
                     }
                 }
@@ -98,13 +98,13 @@ class ClientONOS {
                 accept("application/json")
                 json {
                     type = "PointToPointIntent"
-                    appId = "${pointToPointIntent.applicationId}"
+                    appId = "${pointToPointIntent.applicationId.trim()}"
                     priority = pointToPointIntent.priority
                     selector = {
                         criteria = [
                                 {
                                     type = "ETH_SRC"
-                                    mac = "${pointToPointIntent.macAddress}"
+                                    mac = "${pointToPointIntent.macAddress.trim()}"
                                 }
                         ]
                     }
@@ -122,11 +122,11 @@ class ClientONOS {
                         ]
                     }
                     ingressPoint = {
-                        device = "${pointToPointIntent.deviceId}"
+                        device = "${pointToPointIntent.deviceId.trim()}"
                         port = "${pointToPointIntent.ingressPort}"
                     }
                     egressPoint = {
-                        device = "${pointToPointIntent.deviceId}"
+                        device = "${pointToPointIntent.deviceId.trim()}"
                         port = "${pointToPointIntent.egressPort}"
                     }
                 }
@@ -145,7 +145,7 @@ class ClientONOS {
 
         try {
 
-            def res  = restBuilder.delete("$url/onos/v1/intents/${applicationId}/${key}") {
+            def res  = restBuilder.delete("$url/onos/v1/intents/${applicationId}/${key.trim()}") {
                 auth("$username","$password")
                 accept("application/json")
             }
