@@ -60,14 +60,31 @@ class ClientONOS {
                     type = "PointToPointIntent"
                     appId = "${pointToPointIntent.applicationId.trim()}"
                     priority = pointToPointIntent.priority
-                    selector = {
-                        criteria = [
-                                {
-                                    type = "ETH_SRC"
-                                    mac = "${pointToPointIntent.macAddress.trim()}"
-                                }
-                        ]
-                    }
+
+                    if(!pointToPointIntent.getMacAddressDes().isEmpty()){
+
+                        selector = {
+                            criteria = [
+                                    {
+                                        type = "ETH_SRC"
+                                        mac = "${pointToPointIntent.macAddressSrc.trim()}"
+                                    },
+                                    {
+                                        type = "ETH_DST"
+                                        mac = "${pointToPointIntent.macAddressDes.trim()}"
+                                    }
+                            ]
+                        }
+                    } else
+                        selector = {
+                            criteria = [
+                                    {
+                                        type = "ETH_SRC"
+                                        mac = "${pointToPointIntent.macAddress.trim()}"
+                                    }
+                            ]
+                        }
+
                     ingressPoint = {
                         device = "${pointToPointIntent.deviceId.trim()}"
                         port = "${pointToPointIntent.ingressPort}"
@@ -104,7 +121,7 @@ class ClientONOS {
                         criteria = [
                                 {
                                     type = "ETH_SRC"
-                                    mac = "${pointToPointIntent.macAddress.trim()}"
+                                    mac = "${pointToPointIntent.macAddressSrc.trim()}"
                                 }
                         ]
                     }
