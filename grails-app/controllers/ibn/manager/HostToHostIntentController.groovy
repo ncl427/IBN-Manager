@@ -93,7 +93,7 @@ class HostToHostIntentController {
 
         readPropertyFile();
         ClientONOS clientONOS = new ClientONOS(url, username, password);
-        clientONOS.deleteIntent("org.onosproject.cli","${hostToHostIntentService.get(id).intentKey}")
+        clientONOS.deleteIntent("${hostToHostIntentService.get(id).applicationId}","${hostToHostIntentService.get(id).intentKey}")
 
         hostToHostIntentService.delete(id)
 
