@@ -34,7 +34,7 @@
 
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div style="">
-            <asset:image src="ibn_banner.png" alt="IBN Manager Logo" width="110%" height="250px"  />
+            <asset:image src="ibn_banner.png" alt="IBN Manager Logo" width="110%" height="150px"  />
         </div>
     </div>
 
