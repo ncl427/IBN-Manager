@@ -119,7 +119,7 @@ class PointToPointIntentController {
 
         readPropertyFile();
         ClientONOS clientONOS = new ClientONOS(url, username, password);
-        clientONOS.deleteIntent("org.onosproject.cli","${pointToPointIntentService.get(id).intentKey}")
+        clientONOS.deleteIntent("${pointToPointIntentService.get(id).applicationId}","${pointToPointIntentService.get(id).intentKey}")
 
         pointToPointIntentService.delete(id)
 
