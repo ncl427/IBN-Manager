@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'manager.PointToPointIntent')}" />
+        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'PointToPointIntent')}" />
         <title>Point To Point Intent</title>
     </head>
     <body>
@@ -16,7 +16,7 @@
         <div id="create-pointToPointIntent" class="content scaffold-create" role="main">
             <h1 style="text-align: center">Create Slice Intent</h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${this.pointToPointIntent}">
             <ul class="errors" role="alert">
@@ -69,6 +69,7 @@
                         <input type="text" name="sliceId" value="" required="" id="sliceId">
                     </div>
                 </fieldset>
+
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>

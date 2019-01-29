@@ -2,8 +2,9 @@ package groovy
 
 import grails.plugins.rest.client.RestBuilder
 import grails.plugins.rest.client.RestResponse
-import ibn.manager.HostToHostIntent
-import ibn.manager.PointToPointIntent
+import ibn_manager.HostToHostIntent
+import ibn_manager.LoadBalancingIntent
+import ibn_manager.PointToPointIntent
 import org.springframework.web.client.RestClientException
 
 class ClientONOS {
@@ -165,6 +166,30 @@ class ClientONOS {
             def res  = restBuilder.delete("$url/onos/v1/intents/${applicationId}/${key.trim()}") {
                 auth("$username","$password")
                 accept("application/json")
+            }
+
+            return res
+
+        } catch (RestClientException error){
+
+            println("RestClientException" + error)
+            return null
+        }
+    }
+
+    RestResponse createLoadBalancingIntent(LoadBalancingIntent loadBalancingIntent){
+
+        try {
+
+            def res = restBuilder.post("$url/onos/spm/provision/host"){
+                auth("$username","$password")
+                contentType("application/json")
+                accept("application/json")
+                json {
+                    hostMac = "${loadBalancingIntent.macAddressSrc.trim()}"
+                    switchID = "${loadBalancingIntent.deviceId.trim()}"
+                    ingressPort = "${loadBalancingIntent.ingressPort}"
+                }
             }
 
             return res

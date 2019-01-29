@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'manager.PointToPointIntent')}" />
+        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'PointToPointIntent')}" />
         <title>Point To Point Intent</title>
     </head>
     <body>
