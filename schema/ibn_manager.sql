@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `slicing`;
 CREATE TABLE `slicing`  (
   `slicingId` bigint(20) NOT NULL,
   `version` bigint(20) NOT NULL,
-  `device_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `device_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `intent_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `priority` int(11) NOT NULL,
   `ingress_port` int(11) NOT NULL,
@@ -78,8 +78,24 @@ CREATE TABLE `slicing`  (
   `slice_id` int(11) NULL DEFAULT 0,
   `slice_treatment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `application_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `mac_address_src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`slicingId`) USING BTREE
+  `mac_address_src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mac_address_des` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`pointToPointId`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for load_balancing_intent
+-- ----------------------------
+DROP TABLE IF EXISTS `load_balancing_intent`;
+CREATE TABLE `load_balancing_intent`  (
+  `loadBalancingIntentId` bigint(20) NOT NULL,
+  `version` bigint(20) NOT NULL,
+  `device_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `priority` int(11) NOT NULL,
+  `ingress_port` int(11) NOT NULL,
+  `application_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mac_address_src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`loadBalancingIntentId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

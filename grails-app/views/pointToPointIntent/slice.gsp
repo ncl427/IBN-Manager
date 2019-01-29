@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div id="create-pointToPointIntent" class="content scaffold-create" role="main">
-            <h1 style="text-align: center">Create Path Intent</h1>
+            <h1 style="text-align: center">Create Slice Intent</h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -32,12 +32,6 @@
                             <span class="required-indicator">*</span>
                         </label>
                         <input type="text" name="macAddressSrc" value="" required="" id="macAddressSrc">
-                    </div>
-                    <div class="fieldcontain required">
-                        <label for="macAddressDes">MacAddress Destination
-                            <span class="required-indicator">*</span>
-                        </label>
-                        <input type="text" name="macAddressDes" value="" required="" id="macAddressDes">
                     </div>
                     <div class="fieldcontain required">
                         <label for="applicationId">Application Id
@@ -67,6 +61,12 @@
                             <span class="required-indicator">*</span>
                         </label>
                         <input type="text" name="egressPort" value="" required="" id="egressPort">
+                    </div>
+                    <div class="fieldcontain required">
+                        <label for="sliceId">Slice ID
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <input type="text" name="sliceId" value="" required="" id="sliceId">
                     </div>
                 </fieldset>
 

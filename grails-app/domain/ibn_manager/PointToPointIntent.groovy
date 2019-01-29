@@ -1,4 +1,4 @@
-package ibn.manager
+package ibn_manager
 
 class PointToPointIntent {
 

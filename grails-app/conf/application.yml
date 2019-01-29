@@ -139,11 +139,11 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: none
             url: jdbc:mysql://localhost:3306/ibn_manager?useSSL=false
     test:
             dataSource:
-                dbCreate: update
+                dbCreate: none
                 url: jdbc:mysql://localhost:3306/ibn_manager?useSSL=false
     production:
         dataSource:
@@ -169,6 +169,6 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 onos:
-    url: http://117.17.102.192:8181
+    url: http://192.168.184.80:8181
     username: karaf
     password: karaf

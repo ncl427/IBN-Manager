@@ -11,7 +11,7 @@ buildscript {
 }
 
 version "0.1"
-group "ibnmanager"
+group "ibn_manager"
 
 apply plugin:"eclipse"
 apply plugin:"idea"

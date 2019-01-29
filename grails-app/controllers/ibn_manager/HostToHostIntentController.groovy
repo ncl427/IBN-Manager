@@ -1,4 +1,4 @@
-package ibn.manager
+package ibn_manager
 
 import grails.config.Config
 import grails.plugins.rest.client.RestResponse
@@ -52,8 +52,8 @@ class HostToHostIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent'), hostToHostIntent.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.created.message', args: [message(code: 'hostToHostIntent.label', default: 'HostToHostIntent'), hostToHostIntent.id])
+                redirect hostToHostIntent
             }
             '*' { respond hostToHostIntent, [status: CREATED] }
         }
@@ -78,7 +78,7 @@ class HostToHostIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent'), hostToHostIntent.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'hostToHostIntent.label', default: 'HostToHostIntent'), hostToHostIntent.id])
                 redirect hostToHostIntent
             }
             '*'{ respond hostToHostIntent, [status: OK] }
@@ -99,7 +99,7 @@ class HostToHostIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent')])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'hostToHostIntent.label', default: 'HostToHostIntent'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -109,7 +109,7 @@ class HostToHostIntentController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'hostToHostIntent.label', default: 'Host To Host Intent'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'hostToHostIntent.label', default: 'HostToHostIntent'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

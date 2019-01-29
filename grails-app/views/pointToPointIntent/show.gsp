@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'manager.PointToPointIntent')}" />
         <title>Point To Point Intent</title>
+        <g:set var="entityName" value="${message(code: 'pointToPointIntent.label', default: 'PointToPointIntent')}" />
     </head>
     <body>
         <a href="#show-pointToPointIntent" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

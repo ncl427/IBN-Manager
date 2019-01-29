@@ -118,6 +118,46 @@ The source folder contains supporting code that we can use in our Grails project
 * main/groovy - we can write any Groovy classes here that we can use inside controllers, etc. E.g. utility classes.
 * test - this will contain unit test codes
 
+## Build Process
+Many modern web frameworks in the Java space are more complicated than needed and don’t embrace the Don’t Repeat Yourself (DRY) principles. 
+Grails is a full stack framework and attempts to solve as many pieces of the web development puzzle through the core technology and its associated plugins.
+
+### Installation Requirements
+Before installing **Grails 3.3.6** you will need as a minimum a Java Development Kit (JDK) installed version **1.7 or above**. 
+Download the appropriate **JDK** for your operating system, run the installer, and then set up an environment variable called **JAVA_HOME** pointing to the location of this installation.
+
+```
+JAVA_HOME=/path/to/Java/jdk
+PATH=%JAVA_HOME/bin%
+ ```
+
+###  Downloading and Installing
+The first step to getting up and running with Grails is to install the distribution. MySQL database is required as a external database. 
+
+#### Download MySQL Installer
+ * Download and install [mysql-installer-community-8.0.11.0](https://dev.mysql.com/downloads/mysql/) version in your developer machine. 
+ 
+#### Grails Manual installation
+* [Download](https://github.com/grails/grails-core/releases) a binary distribution of Grails and extract the resulting zip file to a location of your choice
+* Set the **GRAILS_HOME** environment variable to the location where you extracted the zip
+
+```
+GRAILS_HOME=/path/to/grails
+PATH=%GRAILS_HOME/bin%
+```
+ 
+If Grails is working correctly you should now be able to type `grails -version` in the terminal window and see output similar to this:
+
+```
+Grails version: 3.3.6
+```
+
+##  IDE
+* **IntelliJ IDEA Ultimate** is a recommended IDE for development of Java based web application using Groovy on Grails framework.
+* [Download](https://www.jetbrains.com/student/) free individual licenses for students and faculty members.
+* [Getting Started with Grails 3 with IntelliJ IDEA](https://www.jetbrains.com/help/idea/getting-started-with-grails3.html)
+* [Creating Grails Application from Existing Code](https://www.jetbrains.com/help/idea/creating-grails-application-from-existing-code.html)
+
 ## Download 
-You can clone project from here.
+You can clone/download project from here.
 https://github.com/ncl427/IBN-Manager

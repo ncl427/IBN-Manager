@@ -1,10 +1,9 @@
-package ibn.manager
+package ibn_manager
 
+import grails.config.Config
 import grails.plugins.rest.client.RestResponse
 import grails.validation.ValidationException
 import groovy.ClientONOS
-
-import grails.config.Config
 
 import static org.springframework.http.HttpStatus.*
 
@@ -15,7 +14,6 @@ class PointToPointIntentController {
     String url
     String username
     String password
-
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -53,32 +51,20 @@ class PointToPointIntentController {
                 response = clientONOS.createPathComputingIntent(pointToPointIntent)
             else
                 response = clientONOS.createSlicingIntent(pointToPointIntent)
-            
+
             pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
 
             pointToPointIntentService.save(pointToPointIntent)
 
-            // code used for assigning same path for two-way traffic
-
-//                    int tempIngressPort
-//                    tempIngressPort = pointToPointIntent.getIngressPort();
-//                    pointToPointIntent.setIngressPort(pointToPointIntent.getEgressPort());
-//                    pointToPointIntent.setEgressPort(tempIngressPort);
-//                    RestResponse response = clientONOS.createPointToPointIntent(pointToPointIntent, true);
-//                    pointToPointIntent.intentKey = response.getHeaders().getLocation().toString().split("/")[response.getHeaders().getLocation().toString().split("/").length-1]
-//
-//                    pointToPointIntentService.save(new PointToPointIntent(pointToPointIntent.properties))
-
-
         } catch (ValidationException e) {
-            respond pointToPointIntent.errors, view:'path'
+            respond pointToPointIntent.errors, view:'create'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'pointToPointIntent.label', default: 'Point To Point Intent'), ""])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.created.message', args: [message(code: 'pointToPointIntent.label', default: 'PointToPointIntent'), pointToPointIntent.id])
+                redirect pointToPointIntent
             }
             '*' { respond pointToPointIntent, [status: CREATED] }
         }
@@ -103,7 +89,7 @@ class PointToPointIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'pointToPointIntent.label', default: 'Point To Point Intent'), pointToPointIntent.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'pointToPointIntent.label', default: 'PointToPointIntent'), pointToPointIntent.id])
                 redirect pointToPointIntent
             }
             '*'{ respond pointToPointIntent, [status: OK] }
@@ -111,7 +97,6 @@ class PointToPointIntentController {
     }
 
     def delete(Long id) {
-
         if (id == null) {
             notFound()
             return
@@ -125,7 +110,7 @@ class PointToPointIntentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'pointToPointIntent.label', default: ' Point To Point Intent')])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'pointToPointIntent.label', default: 'PointToPointIntent'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -135,7 +120,7 @@ class PointToPointIntentController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointToPointIntent.label', default: 'Point To Point Intent'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointToPointIntent.label', default: 'PointToPointIntent'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
