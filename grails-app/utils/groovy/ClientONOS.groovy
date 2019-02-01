@@ -181,7 +181,7 @@ class ClientONOS {
 
         try {
 
-            def res = restBuilder.post("$url/onos/spm/provision/host"){
+            def res = restBuilder.post("$url/onos/spm/intent/create"){
                 auth("$username","$password")
                 contentType("application/json")
                 accept("application/json")
@@ -190,6 +190,24 @@ class ClientONOS {
                     switchID = "${loadBalancingIntent.deviceId.trim()}"
                     ingressPort = "${loadBalancingIntent.ingressPort}"
                 }
+            }
+
+            return res
+
+        } catch (RestClientException error){
+
+            println("RestClientException" + error)
+            return null
+        }
+    }
+
+    RestResponse deleteLoadBalancingIntent(String applicationId, String macAddressSrc){
+
+        try {
+
+            def res  = restBuilder.delete("$url/onos/spm/${applicationId.trim()}/${macAddressSrc.trim()}") {
+                auth("$username","$password")
+                accept("application/json")
             }
 
             return res

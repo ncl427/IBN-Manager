@@ -40,9 +40,8 @@ class LoadBalancingIntentController {
 
             readPropertyFile();
             ClientONOS clientONOS = new ClientONOS(url, username, password)
-            RestResponse response
 
-            response = clientONOS.createLoadBalancingIntent(loadBalancingIntent)
+            RestResponse response = clientONOS.createLoadBalancingIntent(loadBalancingIntent)
 
             if (response.getStatus() == 200) {
 
@@ -98,7 +97,12 @@ class LoadBalancingIntentController {
             return
         }
 
-        loadBalancingIntentService.delete(id)
+        readPropertyFile();
+        ClientONOS clientONOS = new ClientONOS(url, username, password);
+        RestResponse response = clientONOS.deleteLoadBalancingIntent("${loadBalancingIntentService.get(id).applicationId}","${loadBalancingIntentService.get(id).macAddressSrc}")
+
+        if (response.getStatus() == 204)
+            loadBalancingIntentService.delete(id)
 
         request.withFormat {
             form multipartForm {
