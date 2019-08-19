@@ -1,0 +1,4 @@
+package groovy
+
+class ClientOSM {
+}
