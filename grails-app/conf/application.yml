@@ -172,3 +172,8 @@ onos:
     url: http://117.17.102.192:8181
     username: karaf
     password: karaf
+
+osm:
+    url: https://117.17.102.174:9999
+    username: admin
+    password: admin
